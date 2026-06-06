@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,700&family=Archivo+Narrow:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Montserrat", sans-serif;
+  --font-body-narrow: "Archivo Narrow", sans-serif;
+  
+  /* System override color or direct theme additions */
+  --color-bg-dark: #10131a;
+  --color-bg-deep: #0b0e14;
+  --color-brand-green: #00e476;
+  --color-brand-green-hover: #00ff85;
+  --color-brand-gold: #ffe16d;
+  --color-brand-purple: #9e00d7;
+}
+
+/* Custom premium styles */
+.glass-panel {
+  background: rgba(16, 19, 26, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glow-green {
+  box-shadow: 0 0 25px rgba(0, 228, 118, 0.25);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(158, 0, 213, 0.15);
+}
+
+.obsidian-card {
+  background: linear-gradient(145deg, #1d2026, #0b0e14);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.jackpot-pulse {
+  animation: bg-pulse 2s infinite;
+}
+
+@keyframes bg-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5); }
+  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(16, 19, 26, 0.3);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
