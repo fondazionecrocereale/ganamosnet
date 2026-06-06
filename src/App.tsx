@@ -43,14 +43,22 @@ export default function App() {
     const encodedMessage = encodeURIComponent(messageText);
     const link = `https://wa.me/5492236837099?text=${encodedMessage}`;
     
-    // Direct robust redirection
+    let opened = false;
     try {
       const newWin = window.open(link, "_blank", "noopener,noreferrer");
-      if (!newWin || newWin.closed || typeof newWin.closed === "undefined") {
-        window.location.href = link;
+      if (newWin && !newWin.closed && typeof newWin.closed !== "undefined") {
+        opened = true;
       }
     } catch (e) {
-      window.location.href = link;
+      opened = false;
+    }
+
+    if (!opened) {
+      // Introduce a 250ms delay so that the Facebook Pixel has enough time to securely
+      // transmit the 'Contact' request over the network before the window reloads or navigates.
+      setTimeout(() => {
+        window.location.href = link;
+      }, 250);
     }
   };
 
