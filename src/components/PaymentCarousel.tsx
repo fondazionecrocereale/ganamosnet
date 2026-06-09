@@ -161,7 +161,6 @@ export default function PaymentCarousel({ onSelectWallet, selectedWallet, onCarg
         </div>
         <button
           onClick={() => {
-            trackPixelEvent("Contact");
             if (onCargarAhora) {
               onCargarAhora();
             } else {
