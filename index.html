@@ -15,7 +15,20 @@
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '872310448557591');
-      fbq('track', 'PageView');
+      
+      // Real-time dynamic test code parser to preserve clean production releases
+      var urlParams = new URLSearchParams(window.location.search);
+      var testCode = urlParams.get('test_event_code') || (
+        (window.location.hostname.indexOf('localhost') !== -1 || 
+         window.location.hostname.indexOf('ais-dev') !== -1 || 
+         window.location.hostname.indexOf('ais-pre') !== -1) ? 'TEST28969' : null
+      );
+
+      if (testCode) {
+        fbq('track', 'PageView', { test_event_code: testCode }, { test_event_code: testCode });
+      } else {
+        fbq('track', 'PageView');
+      }
     </script>
     <!-- End Meta Pixel Code -->
   </head>
