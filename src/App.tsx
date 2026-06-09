@@ -104,14 +104,17 @@ export default function App() {
           </p>
 
           <div id="whatsapp-action-btn" className="flex flex-col items-center justify-center gap-4">
-            <button
-              onClick={() => openWhatsAppConcierge(undefined, undefined, true)}
+            <a
+              href="https://wa.me/5492236837099?text=hola%20quiero%20un%20usuario"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackPixelEvent("Contact")}
               className="group relative inline-flex items-center justify-center gap-3 bg-brand-green text-bg-deep font-headline font-black text-xl md:text-2xl px-8 py-5 md:px-12 md:py-6 rounded-2xl shadow-[0_0_35px_rgba(0,228,118,0.4)] hover:shadow-[0_0_55px_rgba(0,228,118,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
             >
               <MessageSquare className="w-6 h-6 md:w-8 md:h-8 fill-current text-bg-deep shrink-0 animate-bounce" />
               <span>HABLAR POR WHATSAPP</span>
               <div className="absolute inset-0 rounded-2xl border-2 border-white/25 scale-100 group-hover:scale-110 opacity-0 group-hover:opacity-100 transition-all" />
-            </button>
+            </a>
             <p className="text-gray-400 text-xs md:text-sm font-sans italic mt-2">
               🎰 Cargá fichas con tu billetera virtual en segundos.
             </p>
@@ -128,14 +131,26 @@ export default function App() {
             
             {/* Payment Systems Carousel */}
             <PaymentCarousel
-              onSelectWallet={(walletName) => openWhatsAppConcierge(undefined, walletName)}
-              onCargarAhora={() => openWhatsAppConcierge()}
+              onSelectWallet={() => {
+                const el = document.getElementById("whatsapp-action-btn");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
+              onCargarAhora={() => {
+                const el = document.getElementById("whatsapp-action-btn");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
             />
 
             {/* Slots Bento List */}
             <SlotsGrid
-              onPlayGame={(gameTitle) => openWhatsAppConcierge(gameTitle)}
-              onCargarSaldo={() => openWhatsAppConcierge()}
+              onPlayGame={() => {
+                const el = document.getElementById("whatsapp-action-btn");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
+              onCargarSaldo={() => {
+                const el = document.getElementById("whatsapp-action-btn");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
             />
 
           </div>
@@ -204,7 +219,10 @@ export default function App() {
           <div className="flex flex-wrap justify-center gap-6 text-xs text-gray-400 font-headline font-semibold">
             <button onClick={() => alert("GANAMOS.net utiliza algoritmos RNG certificados.")} className="hover:text-brand-gold transition-colors cursor-pointer">Seguridad de Juego</button>
             <button onClick={() => alert("Prohibido el acceso a menores de 18 años.")} className="hover:text-brand-gold transition-colors cursor-pointer">Política de Edad</button>
-            <button onClick={() => openWhatsAppConcierge(undefined, undefined, true)} className="hover:text-brand-gold transition-colors cursor-pointer">Soporte Concierge</button>
+            <button onClick={() => {
+              const el = document.getElementById("whatsapp-action-btn");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }} className="hover:text-brand-gold transition-colors cursor-pointer">Soporte Concierge</button>
           </div>
 
           {/* Strict Responsible Gaming Warning Sign board */}
@@ -242,13 +260,16 @@ export default function App() {
         </a>
         
         {/* Giant active quick-play support button */}
-        <button
-          onClick={() => openWhatsAppConcierge(undefined, undefined, true)}
+        <a
+          href="https://wa.me/5492236837099?text=hola%20quiero%20un%20usuario"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackPixelEvent("Contact")}
           className="bg-brand-green text-bg-deep w-14 h-14 rounded-full flex items-center justify-center -translate-y-5 shadow-lg shadow-brand-green/30 border-4 border-bg-dark active:scale-95 transition-transform cursor-pointer"
           aria-label="Atención por Whatsapp"
         >
           <MessageSquare className="w-6 h-6 fill-current text-bg-deep" />
-        </button>
+        </a>
 
         <a href="#pago-seccion" className="flex flex-col items-center gap-1 text-gray-400 hover:text-brand-green transition-all" aria-label="Cargas">
           <Wallet className="w-5 h-5" />
