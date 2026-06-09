@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
 import { WalletMethod } from "../types";
-import { trackPixelEvent } from "../utils/pixel";
 
 interface PaymentCarouselProps {
   onSelectWallet?: (walletName: string) => void;

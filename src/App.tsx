@@ -28,8 +28,10 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const openWhatsAppConcierge = (gameTitle?: string, walletName?: string) => {
-    trackPixelEvent("Contact");
+  const openWhatsAppConcierge = (gameTitle?: string, walletName?: string, shouldTrackContact = false) => {
+    if (shouldTrackContact) {
+      trackPixelEvent("Contact");
+    }
     
     // Core message as requested: "hola quiero un usuario"
     let messageText = "hola quiero un usuario";
@@ -103,7 +105,7 @@ export default function App() {
 
           <div id="whatsapp-action-btn" className="flex flex-col items-center justify-center gap-4">
             <button
-              onClick={() => openWhatsAppConcierge()}
+              onClick={() => openWhatsAppConcierge(undefined, undefined, true)}
               className="group relative inline-flex items-center justify-center gap-3 bg-brand-green text-bg-deep font-headline font-black text-xl md:text-2xl px-8 py-5 md:px-12 md:py-6 rounded-2xl shadow-[0_0_35px_rgba(0,228,118,0.4)] hover:shadow-[0_0_55px_rgba(0,228,118,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
             >
               <MessageSquare className="w-6 h-6 md:w-8 md:h-8 fill-current text-bg-deep shrink-0 animate-bounce" />
@@ -202,7 +204,7 @@ export default function App() {
           <div className="flex flex-wrap justify-center gap-6 text-xs text-gray-400 font-headline font-semibold">
             <button onClick={() => alert("GANAMOS.net utiliza algoritmos RNG certificados.")} className="hover:text-brand-gold transition-colors cursor-pointer">Seguridad de Juego</button>
             <button onClick={() => alert("Prohibido el acceso a menores de 18 años.")} className="hover:text-brand-gold transition-colors cursor-pointer">Política de Edad</button>
-            <button onClick={() => openWhatsAppConcierge()} className="hover:text-brand-gold transition-colors cursor-pointer">Soporte Concierge</button>
+            <button onClick={() => openWhatsAppConcierge(undefined, undefined, true)} className="hover:text-brand-gold transition-colors cursor-pointer">Soporte Concierge</button>
           </div>
 
           {/* Strict Responsible Gaming Warning Sign board */}
@@ -241,7 +243,7 @@ export default function App() {
         
         {/* Giant active quick-play support button */}
         <button
-          onClick={() => openWhatsAppConcierge()}
+          onClick={() => openWhatsAppConcierge(undefined, undefined, true)}
           className="bg-brand-green text-bg-deep w-14 h-14 rounded-full flex items-center justify-center -translate-y-5 shadow-lg shadow-brand-green/30 border-4 border-bg-dark active:scale-95 transition-transform cursor-pointer"
           aria-label="Atención por Whatsapp"
         >

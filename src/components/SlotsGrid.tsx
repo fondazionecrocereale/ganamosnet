@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, Sparkles, Play, Info, RotateCcw, HelpCircle, Star, Coins } from "lucide-react";
 import { SlotGame } from "../types";
-import { trackPixelEvent } from "../utils/pixel";
 
 interface SlotsGridProps {
   onPlayGame: (gameTitle: string) => void;
