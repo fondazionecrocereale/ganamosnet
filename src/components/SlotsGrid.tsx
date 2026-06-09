@@ -66,7 +66,7 @@ const SLOT_REEL_SYMBOLS = ["🍒", "👑", "💎", "🎰", "🔔", "🌟", "🍇
 
 export default function SlotsGrid({ onPlayGame, onCargarSaldo }: SlotsGridProps) {
   const [selectedGame, setSelectedGame] = useState<SlotGame | null>(null);
-
+  
   // Interactive mini-game demo states
   const [isSpinning, setIsSpinning] = useState(false);
   const [reels, setReels] = useState<string[]>(["🎰", "💎", "🎰"]);
@@ -98,7 +98,7 @@ export default function SlotsGrid({ onPlayGame, onCargarSaldo }: SlotsGridProps)
 
       if (spinsLeft <= 0) {
         clearInterval(interval);
-
+        
         // Resolve outcome final symbols
         const finalReels = [
           SLOT_REEL_SYMBOLS[Math.floor(Math.random() * SLOT_REEL_SYMBOLS.length)],
@@ -168,7 +168,7 @@ export default function SlotsGrid({ onPlayGame, onCargarSaldo }: SlotsGridProps)
 
       {/* Bento Grid slots layout */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-
+        
         {/* BIG Feature Slot - Joker's Jewels */}
         {GAMES.filter(g => g.isFeatured).map((game) => (
           <div
@@ -190,11 +190,11 @@ export default function SlotsGrid({ onPlayGame, onCargarSaldo }: SlotsGridProps)
                 <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse inline-block" />
                 HOT NOW
               </div>
-
+              
               <h3 className="font-headline text-3xl md:text-5xl font-black text-white mb-2 leading-none">
                 {game.title}
               </h3>
-
+              
               <p className="text-gray-300 text-xs font-body-narrow max-w-md line-clamp-2 md:line-clamp-3 mb-6">
                 {game.description}
               </p>
@@ -259,7 +259,7 @@ export default function SlotsGrid({ onPlayGame, onCargarSaldo }: SlotsGridProps)
               <p className="text-[10px] text-gray-400 font-body-narrow mt-0.5">
                 RTP: {game.rtp} • {game.volatility}
               </p>
-
+              
               <div className="mt-3.5 flex gap-1.5 w-full opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                 <button
                   type="button"
@@ -286,10 +286,10 @@ export default function SlotsGrid({ onPlayGame, onCargarSaldo }: SlotsGridProps)
       {selectedGame && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in">
           <div className="relative w-full max-w-xl rounded-2xl border border-brand-gold/20 bg-bg-dark text-white shadow-2xl p-6 md:p-8 animate-scale-up overflow-hidden">
-
+            
             {/* Decorator light panels */}
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-brand-gold via-brand-green to-brand-purple" />
-
+            
             <button
               onClick={() => setSelectedGame(null)}
               className="absolute top-4 right-4 p-1 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors cursor-pointer"
@@ -329,8 +329,9 @@ export default function SlotsGrid({ onPlayGame, onCargarSaldo }: SlotsGridProps)
                 {reels.map((symbol, idx) => (
                   <div
                     key={idx}
-                    className={`w-16 h-20 md:w-20 md:h-24 rounded-xl border flex items-center justify-center text-4xl md:text-5xl select-none shadow-inner transition-transform duration-100 ${isSpinning ? "animate-pulse scale-95 border-brand-purple bg-brand-purple/5" : "border-white/15 bg-white/5"
-                      }`}
+                    className={`w-16 h-20 md:w-20 md:h-24 rounded-xl border flex items-center justify-center text-4xl md:text-5xl select-none shadow-inner transition-transform duration-100 ${
+                      isSpinning ? "animate-pulse scale-95 border-brand-purple bg-brand-purple/5" : "border-white/15 bg-white/5"
+                    }`}
                   >
                     {symbol}
                   </div>
@@ -356,8 +357,9 @@ export default function SlotsGrid({ onPlayGame, onCargarSaldo }: SlotsGridProps)
 
               {/* Spin Prize Notification alerts */}
               {demoPrize && (
-                <div className={`mt-3 p-2.5 rounded-xl text-xs text-center font-headline font-bold transition-all duration-300 ${demoPrize.includes("coincidencia") ? "bg-brand-gold/10 border border-brand-gold/20 text-brand-gold animate-bounce" : "bg-white/5 text-gray-400"
-                  }`}>
+                <div className={`mt-3 p-2.5 rounded-xl text-xs text-center font-headline font-bold transition-all duration-300 ${
+                  demoPrize.includes("coincidencia") ? "bg-brand-gold/10 border border-brand-gold/20 text-brand-gold animate-bounce" : "bg-white/5 text-gray-400"
+                }`}>
                   {demoPrize}
                 </div>
               )}
